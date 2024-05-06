@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprints</title>
+    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="../static/css/cssstyles.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body id="sprint-background" >
+
+
+<div th:replace="fragments/navbar :: navbarthree"></div>
+
+<div th:replace="fragments/navbar :: secondnavbar"></div>
+
+<div class="sprint-create">
+    <div><h1 style="color: red" th:text="${message}"></h1></div>
+    <div><h1>All Subproject</h1></div>
+    <div class="table-link"><a th:href="@{'/subproject/create/' + ${currentproject.id}}" href="/createsprint"><p class="sprint-button">Create New SubProject<p/></a></div>
+</div>
+
+<div class="sprint-headline"  th:each="subproject : ${subProjectModelList}">
+    <h1>
+        <span th:text="${subproject.projectName}">SubProject name</span>
+        <span> | </span>
+        <a th:href="@{'/subproject/edit/' + ${subproject.id}}" >Edit Name</a>
+        <span> | </span>
+        <a th:href="@{'/task/create/' + ${subproject.id}}" >Create Task</a>
+    </h1>
+
+
+
+    <!--        <div class="sprint-board">-->
+
+    <!--            <div class="sprint-column">-->
+    <!--                <div class="sprint-header">Sprint Backlog</div>-->
+
+    <!--                <div class="sprint-item" th:each="userstory : ${userstoriesinproject}" th:if="(${#strings.equals(userstory.status, 'sprintbacklog')}) and (${userstory.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${userstory.points}"></h3>-->
+    <!--                    <h2 th:text="${userstory.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${userstory.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/moveuserstoryleft" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/moveuserstoryright" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-item" th:each="technicaltask : ${technicaltasksinproject}" th:if="(${#strings.equals(technicaltask.status, 'sprintbacklog')}) and (${technicaltask.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${technicaltask.points}">Points:</h3>-->
+    <!--                    <h2 th:text="${technicaltask.name}">Name</h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${technicaltask.description}">Description</p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/movetechnicaltaskleft" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/movetechnicaltaskright" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="sprint-footer" th:text="${calculator.calculateSumOfPointsOnStatus(datahandler.divideArrayIntoStatusSpecificArrays(technicaltasksinproject,'sprintbacklog',sprint))}"></div>-->
+    <!--            </div>-->
+
+    <!--            <div class="sprint-column">-->
+    <!--                <div class="sprint-header">Doing</div>-->
+
+    <!--                <div class="sprint-item" th:each="userstory : ${userstoriesinproject}" th:if="(${#strings.equals(userstory.status, 'doing')}) and (${userstory.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${userstory.points}"></h3>-->
+    <!--                    <h2 th:text="${userstory.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${userstory.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/moveuserstoryleft" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/moveuserstoryright" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-item" th:each="technicaltask : ${technicaltasksinproject}" th:if="(${#strings.equals(technicaltask.status, 'doing')}) and (${technicaltask.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${technicaltask.points}"></h3>-->
+    <!--                    <h2 th:text="${technicaltask.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${technicaltask.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/movetechnicaltaskleft" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/movetechnicaltaskright" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-footer" th:text="${calculator.calculateSumOfPointsOnStatus(datahandler.divideArrayIntoStatusSpecificArrays(technicaltasksinproject,'doing',sprint))}"></div>-->
+    <!--            </div>-->
+
+    <!--            <div class="sprint-column">-->
+    <!--                <div class="sprint-header">Test</div>-->
+
+    <!--                <div class="sprint-item" th:each="userstory : ${userstoriesinproject}" th:if="(${#strings.equals(userstory.status, 'testing')}) and (${userstory.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${userstory.points}"></h3>-->
+    <!--                    <h2 th:text="${userstory.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${userstory.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/moveuserstoryleft" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/moveuserstoryright" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-item" th:each="technicaltask : ${technicaltasksinproject}" th:if="(${#strings.equals(technicaltask.status, 'testing')}) and (${technicaltask.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${technicaltask.points}"></h3>-->
+    <!--                    <h2 th:text="${technicaltask.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${technicaltask.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/movetechnicaltaskleft" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/movetechnicaltaskright" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-footer" th:text="${calculator.calculateSumOfPointsOnStatus(datahandler.divideArrayIntoStatusSpecificArrays(technicaltasksinproject,'testing',sprint))}"></div>-->
+    <!--            </div>-->
+
+    <!--            <div class="sprint-column">-->
+    <!--                <div class="sprint-header">Done</div>-->
+
+    <!--                <div class="sprint-item" th:each="userstory : ${userstoriesinproject}" th:if="(${#strings.equals(userstory.status, 'done')}) and (${userstory.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${userstory.points}"></h3>-->
+    <!--                    <h2 th:text="${userstory.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${userstory.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/moveuserstoryleft" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/moveuserstoryright" method="post">-->
+    <!--                                <input type="hidden" name="userstoryid" th:value="${userstory.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-item" th:each="technicaltask : ${technicaltasksinproject}" th:if="(${#strings.equals(technicaltask.status, 'done')}) and (${technicaltask.getSprintId()} == ${sprint.getSprintId()})">-->
+    <!--                    <h3 th:text="${technicaltask.points}"></h3>-->
+    <!--                    <h2 th:text="${technicaltask.name}"></h2>-->
+    <!--                    <div class="sprint-item-content">-->
+    <!--                        <p th:text="${technicaltask.description}"></p>-->
+    <!--                        <div class="sprint-item-buttons">-->
+    <!--                            <form class="moveleft" action="/movetechnicaltaskleft" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+
+    <!--                            <form class="moveright" action="/movetechnicaltaskright" method="post">-->
+    <!--                                <input type="hidden" name="technicaltaskid" th:value="${technicaltask.getId()}"></input>-->
+    <!--                                <input type="submit"></input>-->
+    <!--                            </form>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--                <div class="sprint-footer" th:text="${calculator.calculateSumOfPointsOnStatus(datahandler.divideArrayIntoStatusSpecificArrays(technicaltasksinproject,'done',sprint))}"></div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+</div>
+
+</body>
+</html>

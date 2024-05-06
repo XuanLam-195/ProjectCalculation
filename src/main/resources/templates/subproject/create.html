@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Sprint</title>
+    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" >
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body >
+<div th:replace="fragments/navbar :: navbarthree"></div>
+
+<div id="background">
+    <div class="generalcontainer">
+        <div class="overlaytitle">
+            <h1>Create SubProject</h1>
+        </div>
+
+        <div class="table-container">
+            <div class="templatecreateitem">
+                <div>
+                    <form action="/subproject/save" method="post">
+                        <input  name="projectId" placeholder="SP00X" type="hidden" th:value="${currentproject.id}"></input>
+                        <p>Write SubProject Name for <span style="font-weight: bold">[[${currentproject.projectName}]]</span></p>
+                        <input name="projectName" placeholder="SubProject" type="text" required></input>
+                        <input class="table-link" type="submit" value="Create SubProject"></input>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
