@@ -1,0 +1,39 @@
+<div th:fragment="navbar">
+    <nav class="navbar-one">
+        <label class="logo">Project Manager</label>
+        <ul class="nav-ul">
+            <li><a class="nav-link" th:href="@{'/signup'}" href="signup.html">Create user</a></li>
+            <li><a class="nav-link" th:href="@{'/login'}" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="navbartwo">
+    <nav class="navbar-one">
+        <label class="logo">Project Manager</label>
+        <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-link" href="appfrontpage.html" >Project</a></li>
+            <li><a class="nav-link" th:href="@{'/login'}" href="login.html">Change user</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="navbarthree">
+    <nav class="navbar-one">
+        <label class="logo">Project Manager</label>
+        <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-link"  href="appfrontpage.html" >Project</a></li>
+            <li><a class="nav-link" th:href="@{'/login'}" href="login.html">Change user</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="secondnavbar">
+    <div class="flex-container">
+        <div><a class="navtwo-link"  href="/overview" >Overview</a></div>
+        <div><a class="navtwo-link"  href="epics.html">Epics</a></div>
+        <div><a class="navtwo-link"  href="requirements.html">Requirements</a></div>
+        <div><a class="navtwo-link" href="backlog.html" >Backlog</a></div>
+        <div><a class="navtwo-link"  href="sprints.html">Sprints</a></div>
+    </div>
+</div>

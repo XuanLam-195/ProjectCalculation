@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Project</title>
+    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="/css/cssstyles.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body >
+
+<div id="general-table-background">
+    <div class="generalcontainer">
+        <div class="overlaytitle">
+            <h1>Update project</h1>
+        </div>
+        <div class="table-container">
+            <div class="templatecreateitem">
+                <div>
+                    <form action="/project/update" method="post">
+                        <label for="projectname">New Project name</label>
+                        <p><input id="projectname" name="projectName" type="text" th:value="${project.projectName}" required></p>
+
+                        <label for="projectdescription">New Project Description</label>
+                        <p><input id="projectdescription" name="projectDescription" type="text" th:value="${project.projectDescription}" required></p>
+
+                        <label for="projectowner">New Project Owner</label>
+                        <p><input id="projectowner" name="projectManager" type="text" th:value="${project.projectManager}" required></p>
+
+                        <label for="deadline">New Deadline</label>
+                        <p><input id="deadline" type="date" name="targetDate" th:value="${project.targetDate}" required></p>
+
+                        <p>
+                            <label><input type="radio" name="projectStatus" value="true" th:checked="${project.projectStatus}"> Active</label>
+                            <label><input type="radio" name="projectStatus" value="false" th:checked="${!project.projectStatus}"> Inactive</label>
+                        </p>
+
+
+                        <!--<p><input type="hidden" name="projectstatus"  th:value="${session.currentproject.isProjectStatus()}"></p>-->
+                        <p><input type="hidden" name="id" th:value="${project.id}"></p>
+                        <p><input type="hidden" name="budget" th:value="${project.budget}"></p>
+                        </br>
+                        <input class="signup-login-button" type="submit" value="Update project">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

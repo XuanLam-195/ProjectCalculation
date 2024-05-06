@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Project</title>
+  <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="/css/cssstyles.css">
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body >
+<div id="backlog-background2">
+  <div class="generalcontainer">
+    <div class="overlaytitle">
+      <h1>Create Project</h1>
+    </div>
+    <div class="table-container">
+      <div class="columnitems">
+        <div>
+          <form action="/project/save" method="post">
+            <label for="project_name">Project Name</label>
+            <p><input id="project_name" name="projectName" type="text" required></p>
+
+            <label for="project_description">Project Description</label>
+            <p><input id="project_description" name="projectDescription" type="text" required></p>
+
+            <label for="project_owner">Project Manager</label>
+            <p><input id="project_owner" name="projectManager" type="text" required></p>
+
+            <label for="targetDate">Target Date</label>
+            <p><input id="targetDate" type="date" name="targetDate" value="2024-01-01" required></p>
+            <br>
+            <label for="budget">Budget</label>
+            <p><input id="budget" name="budget" type="text" required></p>
+            </br>
+            <p><input class="signup-login-button" value="Create Project" type="submit"> </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
