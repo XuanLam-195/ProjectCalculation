@@ -352,7 +352,7 @@ label .logo-link{
     justify-content: center;
 }
 
-#sprint-background
+#subproject-background
 {
     background: rgb(7,84,2);
     background: linear-gradient(90deg, rgba(7,84,2,1) 0%, rgba(7,107,2,1) 54%, rgba(27,158,41,1) 100%);
@@ -921,7 +921,7 @@ p{
 
 /* Start of SPRINT PAGE styling */
 
-.sprint-create {
+.subproject-create {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -931,7 +931,7 @@ p{
     color: white;
 }
 
-.sprint-headline {
+.subproject-headline {
     width: 80%;
     margin: 0 auto;
 }

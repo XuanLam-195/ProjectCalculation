@@ -7,20 +7,20 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body id="sprint-background" >
+<body id="subproject-background" >
 
 
 <div th:replace="fragments/navbar :: navbarthree"></div>
 
 <div th:replace="fragments/navbar :: secondnavbar"></div>
 
-<div class="sprint-create">
+<div class="subproject-create">
     <div><h1 style="color: red" th:text="${message}"></h1></div>
     <div><h1>All Subproject</h1></div>
-    <div class="table-link"><a th:href="@{'/subproject/create/' + ${currentproject.id}}" href="/createsprint"><p class="sprint-button">Create New SubProject<p/></a></div>
+    <div class="table-link"><a th:href="@{'/subproject/create/' + ${currentproject.id}}" href="/create-subproject"><p class="subproject-button">Create New SubProject<p/></a></div>
 </div>
 
-<div class="sprint-headline"  th:each="subproject : ${subProjectModelList}">
+<div class="subproject-headline"  th:each="subproject : ${subProjectModelList}">
     <h1>
         <span th:text="${subproject.projectName}">SubProject name</span>
         <span> | </span>
