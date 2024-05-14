@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="../static/css/cssstyles.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body >
+<div id="backlog-background2">
+    <div class="generalcontainer">
+        <div class="overlaytitle">
+            <h1>Create task</h1>
+        </div>
+        <div class="table-container">
+            <div class="columnitems">
+                <div>
+
+                    <form action="/task/save" method="post">
+                        <input name="subProjectId" type="hidden"  th:value="${subProjectModel.id}" ></input>
+                        <p>Write Task Name</p>
+                        <input id="task-name-field" name="taskName" type="text" placeholder="TEC001" required>
+                        <p>Write Task Description</p>
+                        <input id="task-description-field" name="taskDescription" type="text" placeholder="Create HTML Frontpage" required></input>
+                        <p>Planned start date</p>
+                        <input id="plannedStartDate" type="date" name="plannedStartDate" value="2024-01-01" required>
+                        <p>Planned finish date</p>
+                        <input id="plannedFinishDate" type="date" name="plannedFinishDate" value="2024-01-01" required>
+                        <br/>
+                        <br/>
+                        <input class="table-link" type="submit" value="Add Task"></input>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

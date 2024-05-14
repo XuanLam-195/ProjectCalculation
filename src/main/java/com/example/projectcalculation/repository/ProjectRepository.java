@@ -1,7 +1,7 @@
 package com.example.projectcalculation.repository;
 
 import com.example.projectcalculation.model.ProjectModel;
-import com.example.projectcalculation.util.ConnectionManager;
+import com.example.projectcalculation.service.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -113,6 +113,20 @@ public class ProjectRepository {
         }
         return workspaceProjects;
     }
-}
+
+    public void deleteProjectById(Long id){
+        try {
+            Connection connection = connectionManager.getConnection();
+            String SQL_QUERY = "DELETE FROM project WHERE id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
+            pstmt.setLong(1, id);
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Could not delete project");
+        }
+    }
+    }
+
 
 

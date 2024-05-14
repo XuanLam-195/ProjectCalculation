@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("project")
@@ -52,6 +53,12 @@ public class ProjectController {
     @PostMapping("/update")
     public String updateProject(ProjectModel updateProject) {
         projectRepository.updateProject(updateProject);
+        return "redirect:/workspace";
+    }
+
+    @GetMapping("project/delete/{id}")
+    public String deleteProject(@PathVariable("id") Long id) {
+        projectRepository.deleteProjectById(id);
         return "redirect:/workspace";
     }
 }
