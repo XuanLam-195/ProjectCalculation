@@ -2,7 +2,7 @@ package com.example.projectcalculation.repository;
 
 
 import com.example.projectcalculation.model.SubProjectModel;
-import com.example.projectcalculation.service.ConnectionManager;
+import com.example.projectcalculation.utilities.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
