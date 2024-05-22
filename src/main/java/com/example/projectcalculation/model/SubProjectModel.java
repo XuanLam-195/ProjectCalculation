@@ -5,14 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data// auto generate getter setter
+import java.util.List;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubProjectModel {
-    Long id;
-    String projectName;
-    Long projectId;
-
+    private Long id;
+    private String projectName;
+    private Long projectId;
+    private List<TaskModel> taskModelList;
 
     @Override
     public String toString() {

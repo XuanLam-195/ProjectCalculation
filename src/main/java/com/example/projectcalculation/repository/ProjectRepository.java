@@ -36,7 +36,6 @@ public class ProjectRepository {
     }
 
 
-    //Takes an updated project object and shoots it to the database as a preparedstatement
     public void updateProject(ProjectModel updateProject) {
         try {
             Connection connection = connectionManager.getConnection();
@@ -86,17 +85,16 @@ public class ProjectRepository {
     }
 
 
-    public List<ProjectModel> findAll(){
+    public List<ProjectModel> findAll() {
         List<ProjectModel> workspaceProjects = new ArrayList<>();
 
-        try{
+        try {
             Connection connection = connectionManager.getConnection();
             String SQL_QUERY = "SELECT * FROM project ";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
             ResultSet resultset = preparedStatement.executeQuery();
 
-            while(resultset.next())
-            {
+            while (resultset.next()) {
                 ProjectModel foundProject = new ProjectModel();
                 foundProject.setId(resultset.getLong(1));
                 foundProject.setProjectName(resultset.getString(2));
@@ -107,26 +105,27 @@ public class ProjectRepository {
                 workspaceProjects.add(foundProject);
                 //toLocalDate tilføjet for at kunne omskrive java.SQL.date fra databasen til LocalDate objet. da vi bruger localdate some dato attribut
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("could not find project by id");
         }
         return workspaceProjects;
     }
 
-    public void deleteProjectById(Long id){
+    public void delete(Long id){
+
         try {
             Connection connection = connectionManager.getConnection();
-            String SQL_QUERY = "DELETE FROM project WHERE id = ?";
+            final String SQL_QUERY = "DELETE FROM project WHERE id = ?";
             PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
             pstmt.setLong(1, id);
-            pstmt.executeUpdate();
+            pstmt.execute();
         }catch (SQLException e){
+            System.out.println("Error: Could not connect to database and getAllProject. ");
             e.printStackTrace();
-            System.out.println("Could not delete project");
         }
     }
-    }
+}
 
 
 

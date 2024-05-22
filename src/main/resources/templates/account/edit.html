@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/navbar :: head('Edit account')">
+</head>
+<body >
+
+
+<div th:replace="fragments/navbar :: navbarthree"></div>
+
+<div th:replace="fragments/navbar :: secondnavbar"></div>
+
+<div class="sprint-headline" >
+
+    <div class="signup-login-flex-item">
+
+        <h1>Edit Account</h1>
+        <br>
+
+        <form action="/account/save" method="post" th:object="${account}" style="width: 100%">
+
+            <p><input class="signup-input"  type="hidden" id="workspace_name" th:field="*{id}"></p>
+
+            <label for="first_name_field">First name</label>
+            <p><input class="signup-input" id="first_name_field" th:field="*{firstName}" type="text" trequired></p>
+
+            <label for="last_name_field">Last name</label>
+            <p><input class="signup-input" id="last_name_field" th:field="*{lastName}" type="text"  required></p>
+
+            <p><input class="signup-input" type="hidden" id="email_field" th:field="*{email}"  required></p>
+
+            <label style="margin-top: 5px" for="email_field">PERMISSION LEVEL</label>
+            <br>
+            <br/>
+            <select class="signup-input" name="permissionLevel" style="width: 100%; padding: 5px">
+                <option value="EMPLOYEE" th:selected="${account.permissionLevel == 'EMPLOYEE'}"> EMPLOYEE</option>
+                <option value="ADMINISTRATOR" th:selected="${account.permissionLevel == 'ADMINISTRATOR'}"> ADMINISTRATOR</option>
+            </select>
+            <br/>
+            <br/>
+            <button class="signup-login-button" type="submit">Create Account</button>
+            <!-- <p><input value="Opret Admin" type="submit"></p> -->
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/navbar :: head('SubProject Overview')">
+<head th:replace="fragments/navbar :: head('Task List')">
 </head>
 <body >
 
@@ -11,23 +11,12 @@
 
 <div class="sprint-create">
     <div><h1 style="color: red" th:text="${message}"></h1></div>
-    <div><h1>All Sub project</h1></div>
-    <div class="table-link"><a th:href="@{'/subproject/create/' + ${currentproject.id}}" href="/createsprint"><p
-            class="sprint-button">Create new SubProject
-        <p/></a></div>
+    <div><h1>Task List</h1></div>
+    <
 </div>
 
-<div class="sprint-headline" th:each="subproject : ${subProjectModelList}">
-    <h1>
-        <span th:text="${subproject.projectName}">Sub Project name</span>
-        <span> | </span>
-        <a style="color: red" th:href="@{'/subproject/delete/' + ${subproject.id} + '/' + ${subproject.projectId}} ">Delete</a>
-        <span> | </span>
-        <a th:href="@{'/subproject/edit/' + ${subproject.id}}">Edit Name</a>
-        <span> | </span>
-        <a th:href="@{'/task/create/' + ${subproject.id}}">Create Task</a>
+<div class="sprint-headline" >
 
-    </h1>
 
     <table>
         <thead>
@@ -43,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="task : ${subproject.taskModelList}">
+        <tr th:each="task : ${tasks}" >
             <td th:text="${task.taskName}"></td>
             <td th:text="${task.plannedFinishDate}"></td>
             <td th:text="${task.plannedStartDate}"></td>
@@ -52,8 +41,7 @@
             <td th:text="${task.actualResourceCost}"></td>
             <td th:text="${task.assignedName}"></td>
 
-            <td><a th:href="@{'/task/edit/' + ${task.id}}"> Edit</a> |
-                <a th:href="@{'/task/delete/' + ${task.id} + '/' + ${subproject.projectId}}"> Delete</a></td>
+            <td><a th:href="@{'/task/edit/' + ${task.id}}"> Edit</a> </td>
         </tr>
         </tbody>
     </table>

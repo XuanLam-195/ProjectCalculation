@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/navbar :: head('Login')">
+</head>
+<body>
+<div class="signup-login-background-image">
+
+    <div class="signup-login-flex-container">
+
+        <div class="signup-login-flex-item">
+            <h1>Login or create new account</h1>
+            <div class="login-logo">
+                <img th:src="@{image/logo.jfif}"  alt="logo" style="width: 270px">
+            </div>
+        </div>
+
+        <div class="signup-login-flex-item" style="background-color: #cda5a5">
+            <h1>Login</h1>
+
+            <h1 style="color: red" th:text="${message}"></h1>
+
+            <form action="account/doLogin" method="post">
+                <label for="email_field">Email:</label>
+                <p><input id="email_field" name="email" th:value="${email}" type="text" required></p>
+
+                <label for="password_field">Password:</label>
+                <p><input id="password_field" th:value="${password}" name="password" type="password" required></p>
+
+                <button class="signup-login-button" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -10,13 +10,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectModel {
-    Long id;
-    String projectName;
-    String projectManager;
-    Boolean projectStatus;
-    LocalDate targetDate;
-    String projectDescription;
-    Long budget;
+    private Long id;
+    private String projectName;
+    private String projectManager;
+    private Boolean projectStatus;
+    private LocalDate targetDate;
+    private String projectDescription;
+    private Long budget;
 
     @Override
     public String toString() {

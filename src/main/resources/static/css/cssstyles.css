@@ -1,4 +1,4 @@
-/*navbar*/
+/*Styling for navbar*/
 *{
     padding: 0;
     margin: 0;
@@ -6,10 +6,109 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: "Calibri Light";
-    line-height: 1.5;
+
+
+/* START OF STYLING FOR LOGIN AND SIGNUP PAGE */
+
+.signup-login-background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/signup_background.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.signup-login-flex-container {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+    max-width: 900px;
+    width: 100%;
+    height: 100%
+}
+
+.signup-login-flex-item:first-child {
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-login-flex-item {
+    background-color: #151414;
+    border: none;
+    border-radius: 10px; /* Update the border-radius value as needed */
+    width: 675px;
+    height: 600px;
+    padding: 50px;
+}
+
+.sprint-button {
+    color:white;
+}
+
+.signup-login-button {
+    cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 1rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.signup-login-button:hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.signup-login-input {
+    color: rgba(0, 0, 0, .87);
+    border-bottom-color: rgba(0, 0, 0, .42);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .009375em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    align-self: flex-end;
+    box-sizing: border-box;
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+    background: rgb(245, 245, 245);
+    height: 40px;
+}
+
+
+/* END OF STYLING FOR LOGIN AND SIGNUP PAGE */
 
 
 .backgroundimg{
@@ -118,7 +217,7 @@ label .logo-link{
     transition: .5s;
 }
 
-/*overview navbar*/
+/*Styling for overview navbar*/
 .flex-container{
     display: flex;
     height: 60px;
@@ -145,7 +244,7 @@ label .logo-link{
 .flex-container div{
     background-color: #f4f4f4;
     height: 40px;
-    width: 100px;
+    width: 140px;
     border-radius: 30px;
     text-align: center;
     margin-top: 10px;
@@ -164,7 +263,7 @@ label .logo-link{
     transition: .5s;
 }
 
-
+/*Styling for boxes in overview*/
 .overviewcontainer{
     width: 100%;
     height: auto;
@@ -204,6 +303,25 @@ label .logo-link{
     justify-content: center;
 }
 
+
+#backlog-background
+{
+    background: linear-gradient(180deg, hsla(298, 100%, 19%, 1) 0%, hsla(332, 100%, 14%, 1) 100%);
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#backlog-background2
+{
+    background: linear-gradient(180deg, hsla(298, 100%, 19%, 1) 0%, hsla(332, 100%, 14%, 1) 100%);
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
 #general-table-background
 {
     background: linear-gradient(hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
@@ -216,13 +334,7 @@ label .logo-link{
     justify-content: center;
 }
 
-#subproject-background
-{
-    background: rgb(7,84,2);
-    background: linear-gradient(90deg, rgba(7,84,2,1) 0%, rgba(7,107,2,1) 54%, rgba(27,158,41,1) 100%);
-    background-repeat: no-repeat;
-    min-height: 100vh;
-}
+
 
 
 .overlaytitle
@@ -440,7 +552,7 @@ p{
 }
 
 
-/*footer*/
+/*Styling for footer*/
 .container{
     max-width: 1170px;
     margin: auto;
@@ -536,7 +648,7 @@ p{
         width: 100%;
     }
 }
-/* frontpage */
+/* frontpage styles */
 .rowfrontpage {
     display: flex;
     flex-wrap: wrap;
@@ -724,7 +836,7 @@ p{
     right: 10px;
     display: inline-block;
     outline: 0;
-
+    
     /* Styling */
 
 
@@ -742,6 +854,34 @@ p{
     transform: scale(0.8);
 
 }
+.appfrontpage-delete-project-button:hover {
+    color: #111111;
+    background-color: #c3c9d2;
+    border-color: #0a58ca;
+    transform: scale(0.8);
+}
+.appfrontpage-delete-project-button {
+    position: absolute;
+    bottom: 10px;
+    right: 217px;
+
+    /* Stylyng */
+    cursor: pointer;
+    outline: 0;
+    color: #fff;
+    background-color: #dc7ee0;
+    border-color: #ee0946;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 1rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transform: scale(0.8);
+}
 
 .appfrontpage-project-button:hover {
     color: #fff;
@@ -754,21 +894,21 @@ p{
     /* Placement */
     position: absolute;
     bottom: 10px;
-    right: 100px;
+    right: 117px;
 
     /* Stylyng */
     cursor: pointer;
     outline: 0;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    color: #0c0c0c;
+    background-color: #9ed5af;
+    border-color: #2167ce;
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
     border: 1px solid transparent;
     padding: 6px 12px;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 1rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     transform: scale(0.8);
@@ -785,7 +925,7 @@ p{
 
 /* Start of SPRINT PAGE styling */
 
-.subproject-create {
+.sprint-create {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -795,8 +935,135 @@ p{
     color: white;
 }
 
-.subproject-headline {
+.sprint-headline {
     width: 80%;
     margin: 0 auto;
 }
 
+.sprint-headline h1
+{
+    color: black;
+}
+
+
+.sprint-board {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add bottom margin */
+    gap: 10px;
+
+}
+
+
+.sprint-column {
+    flex: 1; /* Occupies equal space within sprint-board */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Establishes a positioning context for absolute positioning */
+    padding-bottom: 20px; /* Add some padding to the bottom */
+    background-color: #F4F5F7; /* Add light grey background color */
+    border-radius: 5px;
+
+}
+
+.sprint-header {
+    padding: 10px; /* Add some padding */
+    font-size: 18px; /* Increase the font size */
+    font-weight: bold; /* Add bold font weight */
+    text-align: center; /* Center the text horizontally */
+}
+
+.sprint-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* Make the footer stretch across the entire column */ 
+    font-size: 18px; /* Increase the font size */
+    font-weight: bold; /* Add bold font weight */
+    text-align: center; /* Center the text horizontally */
+}
+
+.sprint-item {
+    position: relative;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 10px 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1); /* Add a small shadow */
+    padding: 5px 5px 5px 5px;
+}
+
+.sprint-item:hover {
+    transform: scale(1.01);
+    box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1); /* Add a small shadow */
+}
+
+.sprint-item-content {
+    flex: 1;
+    position: relative;
+    padding-bottom: 20px; /* Add bottom padding to create space between <p> and buttons */
+}
+
+.sprint-item-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+
+.moveright input[type="submit"]
+ {
+    background-image: url(../images/right-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: none;
+    width: 29px; /* change width and height to the size of the image */
+    height: 29px;
+    color: transparent;
+    text-indent: 100%; /* hide the submit button text */
+    white-space: nowrap;
+}
+
+.moveright input[type="submit"]:hover
+{
+    border: solid;
+}
+
+.moveleft input[type="submit"]
+{
+    background-image: url(../images/left-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: none;
+    width: 29px; /* change width and height to the size of the image */
+    height: 29px;
+    color: transparent;
+    text-indent: 100%; /* hide the submit button text */
+    white-space: nowrap;
+}
+
+.moveleft input[type="submit"]:hover
+{
+    border: solid;
+}
+
+
+table, th, td {
+    border:1px solid black;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th {
+    background-color: #04AA6D;
+    color: white;
+}
+/* End of SPRINT PAGE styling */

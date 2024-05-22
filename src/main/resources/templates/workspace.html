@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>WorkSpace</title>
-    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="/css/cssstyles.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<head th:replace="fragments/navbar :: head('Workspace')">
 </head>
 <body >
 <div th:replace="fragments/navbar :: navbarthree"></div>
+<div th:replace="fragments/navbar :: secondnavbar"></div>
 
 <div class="appfrontpage-main">
     <h1>Active Projects</h1>
+    <h2 style="color: red">[[${message}]]</h2>
     <div class="appfrontpage-project-matrix">
         <div class="appfrontpage-project" th:each="project : ${projects}" th:if="${project.projectStatus}">
             <h3 th:text="${project.projectManager}"></h3>
@@ -19,14 +16,15 @@
             <p th:text="${project.projectDescription}"></p>
             <p th:text="${project.targetDate}"></p>
             <div class="appfrontpage-project-deadline"><p th:text="${project.targetDate}"></p></div>
-
             <a class="appfrontpage-modify-project-button"  th:href="@{'/project/edit/' + ${project.id}}" href="/modifyproject"> Modify Project</a>
             <a class="appfrontpage-project-button" th:href="@{'/subproject/overview/' + ${project.id}}" href="/overview">Go to project</a>
             </th:block>
         </div>
-        <div class="appfrontpage-create-project">
+        <div class="appfrontpage-create-project" th:if="${session.current_user.permissionLevel.name == 'ADMINISTRATOR'}">
             <h2>Create New Project</h2>
-            <p>Make a great project by your good ideas.</p>
+            <p>New ideas spawn new projects.</p>
+
+
             <a class="appfrontpage-project-button" th:href="@{'/project/create'}">Create Project</a>
         </div>
     </div>
@@ -38,10 +36,11 @@
             <h2 th:text="${project.projectName}"></h2>
             <p th:text="${project.projectDescription}"></p>
             <p th:text="${project.targetDate}"></p>
-            <div class="appfrontpage-project-deadline"><p th:text="${project.targetDate}"></p></div>
+            <!--                <div class="appfrontpage-project-deadline"><p th:text="${project.targetDate}"></p></div>-->
 
-            <a class="appfrontpage-modify-project-button"  th:href="@{'/project/edit/' + ${project.id}}" href="modifyproject"> Modify Project</a>
-            <a class="appfrontpage-project-button" th:href="@{'/subproject/overview/' + ${project.id}}" href="/overview">Go to project</a>
+            <a class="appfrontpage-delete-project-button"  th:href="@{'/project/delete/' + ${project.id}}" > Delete Project</a>
+            <a class="appfrontpage-modify-project-button"  th:href="@{'/project/edit/' + ${project.id}}" > Modify Project</a>
+            <a class="appfrontpage-project-button" th:href="@{'/subproject/overview/' + ${project.id}}" >Go to project</a>
         </div>
     </div>
 </div>

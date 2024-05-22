@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Update Subproject</title>
-    <link rel="stylesheet" th:href="@{/css/cssstyles.css}" href="../static/css/cssstyles.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<head th:replace="fragments/navbar :: head('Update subProject')">
 </head>
 
 <body>
+
 <div th:replace="fragments/navbar :: navbarthree"></div>
 
-<div id="subproject-background">
+<div th:replace="fragments/navbar :: secondnavbar"></div>
+
+<div id="sprint-background">
     <div class="generalcontainer">
         <div class="overlaytitle">
             <h1>Update Subproject</h1>
@@ -35,6 +33,6 @@
     </div>
 </div>
 
-
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

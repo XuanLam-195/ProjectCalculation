@@ -79,6 +79,34 @@ public class UserRepository {
         return userList;
     }
 
+
+    public List<AccountModel> getAllEmployee(){
+        List <AccountModel> userList = new ArrayList<>();
+
+        try{
+            Connection connection = connectionManager.getConnection();
+            Statement statement = connection.createStatement();
+            final String SQL_QUERY = "SELECT * FROM users where permission_level = '" + PermissionLevel.EMPLOYEE + "'";
+            ResultSet resultSet = statement.executeQuery(SQL_QUERY);
+
+            while(resultSet.next()){
+                Long id = resultSet.getLong(1);
+                String email = resultSet.getString(2);
+                String password = resultSet.getString(3);
+                String firstName = resultSet.getString(4);
+                String lastName = resultSet.getString(5);
+                PermissionLevel permissionLevel = PermissionLevel.valueOf(resultSet.getString(6));
+                AccountModel accountModel = new AccountModel(id, email, password, firstName, lastName,  permissionLevel);
+                userList.add(accountModel);
+            }
+        } catch(SQLException e){
+            System.out.println("Error: Could not connect to database and getAllEmployee.");
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+
     public AccountModel getByEmail(String email){
         try{
             Connection connection = connectionManager.getConnection();
@@ -136,7 +164,7 @@ public class UserRepository {
             final String SQL_QUERY = "DELETE FROM users WHERE id = ?";
             PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
             pstmt.setLong(1, id);
-            ResultSet resultSet = pstmt.executeQuery();
+            pstmt.execute();
         }catch (SQLException e){
             System.out.println("Error: Could not connect to database and getAllUsers. ");
             e.printStackTrace();

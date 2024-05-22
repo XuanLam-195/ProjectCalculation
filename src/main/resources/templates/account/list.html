@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/navbar :: head('Account List')">
+</head>
+<body>
+
+
+<div th:replace="fragments/navbar :: navbarthree"></div>
+
+<div th:replace="fragments/navbar :: secondnavbar"></div>
+
+<div class="sprint-create">
+    <div><h1 style="color: red" th:text="${message}"></h1></div>
+    <div><h1>List Account</h1></div>
+    <div class="table-link"><a th:href="@{'/account/create'}"><p
+            class="sprint-button">Create new Account
+        <p/></a></div>
+</div>
+
+
+<div class="sprint-headline" >
+
+    <table>
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Level</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="acc : ${accountList}">
+            <td th:text="${acc.email}"></td>
+            <td th:text="${acc.firstName}"></td>
+            <td th:text="${acc.lastName}"></td>
+            <td th:text="${acc.permissionLevel}"></td>
+
+            <td><a th:href="@{'/account/edit/' + ${acc.id}}"> Edit</a> |
+                <a th:href="@{'/account/delete/' + ${acc.id}}"> Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

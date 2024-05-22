@@ -3,6 +3,7 @@ package com.example.projectcalculation.repository;
 
 import com.example.projectcalculation.model.SubProjectModel;
 import com.example.projectcalculation.utilities.ConnectionManager;
+import com.example.projectcalculation.utilities.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -103,5 +104,19 @@ public class SubProjectRepository {
             System.out.println("could not find project by id");
         }
         return workspaceProjects;
+    }
+
+    public void delete(Long id){
+        try {
+            Connection connection = connectionManager.getConnection();
+
+            final String SQL_QUERY = "DELETE FROM subproject WHERE id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
+            pstmt.setLong(1, id);
+            pstmt.execute();
+        }catch (SQLException e){
+            System.out.println("Error: Could not connect to database and getAllSubproject. ");
+            e.printStackTrace();
+        }
     }
 }
