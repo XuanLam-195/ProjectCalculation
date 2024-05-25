@@ -33,7 +33,6 @@ public class TaskModel {
         taskDto.setName(this.getTaskName());
         taskDto.setStart(this.getPlannedStartDate().atStartOfDay().toEpochSecond(ZoneOffset.of("+02:00")) * 1000);
         taskDto.setEnd(this.getPlannedFinishDate().atStartOfDay().toEpochSecond(ZoneOffset.of("+02:00")) * 1000);
-        taskDto.setName(this.getAssignedName());
         taskDto.setId(this.getId());
         return taskDto;
     }

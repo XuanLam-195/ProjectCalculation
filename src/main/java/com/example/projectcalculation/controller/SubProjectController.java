@@ -43,7 +43,7 @@ public class SubProjectController {
         model.addAttribute("currentproject", currentproject);
         session.setAttribute("currentproject", currentproject);
 
-        List<SubProjectModel> subProjectModelList = subProjectService.findAllByProjectId(projectID);
+        List<SubProjectModel> subProjectModelList = subProjectService.finAllSubProject(projectID);
         model.addAttribute("subProjectModelList", subProjectModelList);
         return "subproject/overview";
     }
@@ -80,27 +80,27 @@ public class SubProjectController {
         if (!Utils.validSession(session))
             return Constant.RETURN_LOGIN;
         subProjectService.updateProject(updateProject);
-        redirectAttributes.addFlashAttribute("message", "Update sub project " + updateProject.getProjectName() + " is success!");
+        redirectAttributes.addFlashAttribute("message", "Update subproject " + updateProject.getProjectName() + " is success!");
         return "redirect:/subproject/overview/" + updateProject.getProjectId();
     }
 
     @GetMapping("/getTaskBySubProjectId/{id}")
     @ResponseBody
-    public ResponseTaskDto getTasksBySubProjectId(@PathVariable("id") Long id){
-       ResponseTaskDto responseTaskDto = new ResponseTaskDto();
+    public ResponseTaskDto getTasksBySubProjectId(@PathVariable("id") Long id) {
+        ResponseTaskDto responseTaskDto = new ResponseTaskDto();
         List<TaskDto> taskDtos = new ArrayList<>();
         SubProjectModel subProjectModel = subProjectService.findProjectByID(id);
-       responseTaskDto.setTasksHeader("Tasks of " + subProjectModel.getProjectName());
+        responseTaskDto.setTasksHeader("Tasks of " + subProjectModel.getProjectName());
         List<TaskModel> taskModelList = taskService.findAllBySubProject(id);
-        for (TaskModel taskModel : taskModelList){
+        for (TaskModel taskModel : taskModelList) {
             taskDtos.add(taskModel.toTaskDto());
         }
         responseTaskDto.setTasks(taskDtos);
-        return  responseTaskDto;
+        return responseTaskDto;
     }
 
     @GetMapping("/delete/{id}/{projectId}")
-    public String delete( @PathVariable("id") Long id, @PathVariable("projectId") Long prjectId, RedirectAttributes redirectAttributes, HttpSession session) {
+    public String delete(@PathVariable("id") Long id, @PathVariable("projectId") Long prjectId, RedirectAttributes redirectAttributes, HttpSession session) {
         if (!Utils.validSession(session))
             return Constant.RETURN_LOGIN;
         String result = subProjectService.delete(id);

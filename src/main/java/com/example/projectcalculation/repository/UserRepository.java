@@ -20,7 +20,8 @@ public class UserRepository {
     public void createAccount(AccountModel newUser){
         try {
             Connection connection = connectionManager.getConnection();
-            final String CREATE_QUERY = "INSERT INTO users(email, password, firstname, lastname, permission_level)" +
+            final String CREATE_QUERY = "INSERT INTO users" +
+                    "(email, password, firstname, lastname, permission_level)" +
                     " VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = connection.prepareStatement(CREATE_QUERY);
             pstmt.setString(1, newUser.getEmail());
@@ -155,6 +156,7 @@ public class UserRepository {
         }
         return null;
     }
+
 
     public void delete(Long id){
 
