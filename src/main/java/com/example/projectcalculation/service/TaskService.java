@@ -1,5 +1,6 @@
 package com.example.projectcalculation.service;
 
+import com.example.projectcalculation.dto.ReportUserTime;
 import com.example.projectcalculation.model.TaskModel;
 import com.example.projectcalculation.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,9 @@ public class TaskService {
 
     public List<TaskModel> findAllByCurrentUser(Long userId) {
         return taskRepository.findAllByCurrentUser(userId);
+    }
+
+    public List<ReportUserTime> getAllReportUserTimeByProject(Long userId){
+        return taskRepository.getAllReportUserTimeByProject(userId);
     }
 }

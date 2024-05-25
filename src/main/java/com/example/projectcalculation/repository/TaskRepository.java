@@ -1,5 +1,6 @@
 package com.example.projectcalculation.repository;
 
+import com.example.projectcalculation.dto.ReportUserTime;
 import com.example.projectcalculation.model.TaskModel;
 
 import com.example.projectcalculation.utilities.ConnectionManager;
@@ -171,5 +172,61 @@ public class TaskRepository {
             System.out.println("Could not find current user by ID");
         }
         return taskModelList;
+    }
+
+
+    public List<ReportUserTime> getAllReportUserTime(Long subProjectId){
+        List<ReportUserTime> reportUserTimes = new ArrayList<>();
+
+        try{
+            Connection connection = connectionManager.getConnection();
+            String SQL_QUERY = "SELECT u.id, u.email, SUM(t.actual_hours)" +
+                    "FROM task t JOIN users u ON t.assigned = u.id WHERE t.subproject_id = ? GROUP BY t.assigned";
+            PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
+            pstmt.setLong(1, subProjectId);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()){
+                ReportUserTime reportUserTime = new ReportUserTime();
+                int number = 1;
+                reportUserTime.setAssigned(resultSet.getLong(number++));
+                reportUserTime.setName(resultSet.getString(number++));
+                reportUserTime.setTotalTime((resultSet.getInt(number++)));
+                reportUserTimes.add(reportUserTime);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Could not find project by id");
+        }
+        return reportUserTimes;
+    }
+
+
+
+    public List<ReportUserTime> getAllReportUserTimeByProject(Long accountId){
+        List<ReportUserTime> reportUserTimes = new ArrayList<>();
+
+        try{
+            Connection connection = connectionManager.getConnection();
+            String SQL_QUERY = "SELECT p.project_name, SUM(t.actual_hours)" +
+                    " FROM task t JOIN subproject sp ON t.subproject_id = sp.id" +
+                    " JOIN project p ON p.id = sp.project_id" +
+                    " WHERE t.assigned = ? GROUP BY p.id";
+            PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
+            pstmt.setLong(1, accountId);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()){
+                ReportUserTime reportUserTime = new ReportUserTime();
+                int number = 1;
+                reportUserTime.setName(resultSet.getString(number++));
+                reportUserTime.setTotalTime((resultSet.getInt(number++)));
+                reportUserTimes.add(reportUserTime);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("Could not find project by id");
+        }
+        return reportUserTimes;
     }
 }

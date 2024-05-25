@@ -21,6 +21,7 @@ public class SubProjectService {
         List<SubProjectModel> subProjectModelList = subProjectRepository.findAllByProjectId(projectId);
         for (SubProjectModel subProject : subProjectModelList) {
             subProject.setTaskModelList(taskRepository.findAllBySubproject(subProject.getId()));
+            subProject.setReportUserTimes(taskRepository.getAllReportUserTime(subProject.getId()));
         }
         return subProjectModelList;
     }
@@ -39,12 +40,11 @@ public class SubProjectService {
         return subProjectRepository.findProjectByID(id);
     }
 
-    public List<SubProjectModel> findAllByProjectId(Long projectId) {
+    public List<SubProjectModel> findAllSubProjectId(Long projectId) {
         List<SubProjectModel> subProjectModelList = subProjectRepository.findAllByProjectId(projectId);
         for (SubProjectModel subProject : subProjectModelList) {
             subProject.setTaskModelList(taskRepository.findAllBySubproject(subProject.getId()));
         }
-
         return subProjectModelList;
     }
 

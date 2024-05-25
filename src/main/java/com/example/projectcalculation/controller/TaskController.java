@@ -70,7 +70,7 @@ public class TaskController {
             return Constant.RETURN_LOGIN;
         taskService.update(taskModel);
         SubProjectModel projectModel = subProjectService.findProjectByID(taskModel.getSubProjectId());
-        redirectAttributes.addFlashAttribute("message", "Update task" + taskModel.getTaskName() + " is success!");
+        redirectAttributes.addFlashAttribute("message", "Update " + taskModel.getTaskName() + " is success!");
         return "redirect:/subproject/overview/" + projectModel.getProjectId();
     }
 
@@ -81,7 +81,8 @@ public class TaskController {
             return Constant.RETURN_LOGIN;
         String result = taskService.delete(id);
         redirectAttributes.addFlashAttribute("message", result);
-        return "redirect:/project/overview/" + projectId;
+        return "redirect:/subproject/overview/" + projectId;// Sai ở chỗ này anh nhé con nua e
+
     }
 
     @GetMapping("/list")
@@ -91,6 +92,7 @@ public class TaskController {
 
         Long userId = ((AccountModel)session.getAttribute(Constant.CURRENT_USER)).getId();
         model.addAttribute("tasks", taskService.findAllByCurrentUser(userId));
+        model.addAttribute("times", taskService.getAllReportUserTimeByProject(userId));
         return "task/list";
     }
 

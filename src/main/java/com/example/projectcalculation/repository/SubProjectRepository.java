@@ -20,17 +20,16 @@ public class SubProjectRepository {
     @Autowired
     ConnectionManager connectionManager;
 
-    //takes a project as parameter and makes a prepared statement of information from this object, and shoots it to the database
+
     public void createProject(SubProjectModel newProject) {
         try {
             Connection connection = connectionManager.getConnection();
             final String CREATE_QUERY = "INSERT INTO subproject (project_name, project_id) VALUES (?,?)";
-            //prepare QUERY
+
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
             preparedStatement.setString(1, newProject.getProjectName());
             preparedStatement.setLong(2, newProject.getProjectId());
 
-            //EXECUTE QUERY
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Could not add Project");
@@ -39,13 +38,12 @@ public class SubProjectRepository {
     }
 
 
-    //Takes an updated project object and shoots it to the database as a preparedstatement
+
     public void updateProject(SubProjectModel updateProject) {
         try {
             Connection connection = connectionManager.getConnection();
             String SQL_QUERY = "UPDATE subproject SET project_name = ?, project_id = ? WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
-
 
             preparedStatement.setString(1, updateProject.getProjectName());
             preparedStatement.setLong(2, updateProject.getProjectId());
@@ -58,7 +56,7 @@ public class SubProjectRepository {
         }
     }
 
-    //Take a integer parameter, and finds the project object that has this id and creates a new object to return
+
     public SubProjectModel findProjectByID(Long id) {
         SubProjectModel foundProject = new SubProjectModel();
         foundProject.setId(id);
@@ -119,4 +117,6 @@ public class SubProjectRepository {
             e.printStackTrace();
         }
     }
+
+
 }

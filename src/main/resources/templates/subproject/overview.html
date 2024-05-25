@@ -19,7 +19,7 @@
 
 <div class="sprint-headline" th:each="subproject : ${subProjectModelList}">
     <h1>
-        <span th:text="${subproject.projectName}">Sub Project name</span>
+        <span th:text="${subproject.projectName}">SubProject name</span>
         <span> | </span>
         <a style="color: red" th:href="@{'/subproject/delete/' + ${subproject.id} + '/' + ${subproject.projectId}} ">Delete</a>
         <span> | </span>
@@ -29,7 +29,7 @@
 
     </h1>
 
-    <table>
+    <table  style="width: 100%">
         <thead>
         <tr>
             <th>Task Name</th>
@@ -57,6 +57,22 @@
         </tr>
         </tbody>
     </table>
+    <br>
+    <table style="width: 100%">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Total Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="report : ${subproject.reportUserTimes}">
+            <td th:text="${report.name}"></td>
+            <td th:text="${report.totalTime} + ' hours'"></td>
+        </tr>
+        </tbody>
+    </table>
+
 
 </div>
 

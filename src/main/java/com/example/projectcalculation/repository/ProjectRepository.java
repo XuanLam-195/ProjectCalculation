@@ -19,7 +19,7 @@ public class ProjectRepository {
         try {
             Connection connection = connectionManager.getConnection();
             final String CREATE_QUERY = "INSERT INTO project (project_name, project_manager, target_date, project_description, budget) VALUES (?,?,?,?,?)";
-            //prepare QUERY
+
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY);
             preparedStatement.setString(1, newProject.getProjectName());
             preparedStatement.setString(2, newProject.getProjectManager());
@@ -27,7 +27,6 @@ public class ProjectRepository {
             preparedStatement.setString(4, newProject.getProjectDescription());
             preparedStatement.setLong(5, newProject.getBudget());
 
-            //EXECUTE QUERY
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Could not add Project");
@@ -47,7 +46,7 @@ public class ProjectRepository {
             preparedStatement.setString(2, updateProject.getProjectDescription());
             preparedStatement.setString(3, updateProject.getProjectManager());
             preparedStatement.setBoolean(4, updateProject.getProjectStatus());
-            preparedStatement.setDate(5, Date.valueOf(updateProject.getTargetDate())); //sætter den konverteret java.sql.date som project deadline
+            preparedStatement.setDate(5, Date.valueOf(updateProject.getTargetDate()));
             preparedStatement.setLong(6, updateProject.getBudget());
             preparedStatement.setLong(7, updateProject.getId());
             preparedStatement.executeUpdate();
@@ -58,7 +57,7 @@ public class ProjectRepository {
         }
     }
 
-    //Take a integer parameter, and finds the project object that has this id and creates a new object to return
+
     public ProjectModel findProjectByID(Long id) {
         ProjectModel foundProject = new ProjectModel();
         foundProject.setId(id);

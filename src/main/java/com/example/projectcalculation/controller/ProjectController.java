@@ -20,14 +20,7 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
-    @GetMapping("/overview/{id}")
-    public String overview(@PathVariable("id") Long projectID, HttpSession session) {
-        if (!Utils.validSession(session))
-            return Constant.RETURN_LOGIN;
-        ProjectModel currentproject = projectService.findProjectByID(projectID);
-        currentproject.setId(projectID);
-        return "project/overview";
-    }
+
 
     @GetMapping("/create")
     public String getCreateProject(HttpSession session) {
