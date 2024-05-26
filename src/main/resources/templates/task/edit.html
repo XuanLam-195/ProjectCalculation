@@ -20,19 +20,19 @@
                         <input type="hidden"  th:field="*{id}" ></input>
                         <input type="hidden"  th:field="*{subProjectId}" ></input>
                         <p>Write Task Name</p>
-                        <input id="task-name-field" th:field="*{taskName}" type="text" placeholder="TEC001" required>
+                        <input id="task-name-field" th:field="*{taskName}" type="text" placeholder="TEC001" required></input>
                         <p>Write Task Description</p>
                         <input id="task-description-field" th:field="*{taskDescription}" type="text" placeholder="Create HTML Frontpage" required></input>
                         <p>Planned start date</p>
-                        <input id="plannedStartDate" type="date" th:field="*{plannedStartDate}"  required>
+                        <input id="plannedStartDate" type="date" th:field="*{plannedStartDate}"  required></input>
                         <p>Planned finish date</p>
-                        <input id="plannedFinishDate" type="date" th:field="*{plannedFinishDate}"   required>
+                        <input id="plannedFinishDate" type="date" th:field="*{plannedFinishDate}"   required></input>
                         <p>Duration</p>
-                        <input id="duration" type="number" th:field="*{duration}"   required>
+                        <input id="duration" type="number" th:field="*{duration}"   required></input>
                         <p>Actual Hours</p>
-                        <input id="actualHours" type="number" th:field="*{actualHours}"   required>
+                        <input id="actualHours" type="number" th:field="*{actualHours}"   required></input>
                         <p>Actual Resource Cost</p>
-                        <input id="actualResourceCost" type="number" th:field="*{actualResourceCost}"   required>
+                        <input id="actualResourceCost" type="number" th:field="*{actualResourceCost}"   required></input>
                         <p>Assigned</p>
                         <select name="assigned" >
                             <option th:each="account : ${accounts}"  th:value="${account.id}" th:selected="${account.id == task.assigned}" th:text="${account.email}"></option>

@@ -20,8 +20,9 @@
         <thead>
         <tr>
             <th>Task Name</th>
-            <th>Planned Finish</th>
+            <th>Task Description</th>
             <th>Planned Start</th>
+            <th>Planned Finish</th>
             <th>Duration</th>
             <th>actualHours</th>
             <th>actualResourceCost</th>
@@ -32,14 +33,17 @@
         <tbody>
         <tr th:each="task : ${tasks}" >
             <td th:text="${task.taskName}"></td>
-            <td th:text="${task.plannedFinishDate}"></td>
+            <td th:text="${task.taskDescription}"></td>
             <td th:text="${task.plannedStartDate}"></td>
+            <td th:text="${task.plannedFinishDate}"></td>
             <td th:text="${task.duration}"></td>
             <td th:text="${task.actualHours}"></td>
             <td th:text="${task.actualResourceCost}"></td>
             <td th:text="${task.assignedName}"></td>
 
-            <td><a th:href="@{'/task/edit/' + ${task.id}}"> Edit</a> </td>
+            <td><a th:href="@{'/task/edit/' + ${task.id}}"> Edit</a> |
+                <a th:href="@{'/task/delete/' + ${task.id} + '/' + ${task.id}}"> Delete</a></td>
+
         </tr>
         </tbody>
     </table>

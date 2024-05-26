@@ -19,13 +19,13 @@
                     <form action="/task/save" method="post">
                         <input name="subProjectId" type="hidden"  th:value="${subProjectModel.id}" ></input>
                         <p>Write Task Name</p>
-                        <input id="task-name-field" name="taskName" type="text" placeholder="TEC001" required>
+                        <input id="task-name-field" name="taskName" type="text" placeholder="TEC001" required></input>
                         <p>Write Task Description</p>
                         <input id="task-description-field" name="taskDescription" type="text" placeholder="Create HTML Frontpage" required></input>
                         <p>Planned start date</p>
-                        <input id="plannedStartDate" type="date" name="plannedStartDate" value="2024-01-01" required>
+                        <input id="plannedStartDate" type="date" name="plannedStartDate" value="2024-01-01" required></input>
                         <p>Planned finish date</p>
-                        <input id="plannedFinishDate" type="date" name="plannedFinishDate" value="2024-01-01" required>
+                        <input id="plannedFinishDate" type="date" name="plannedFinishDate" value="2024-01-01" required></input>
                         <p>Assigned</p>
                         <select name="assigned">
                             <option th:each="account : ${accounts}"  th:value="${account.id}" th:text="${account.email}"></option>
