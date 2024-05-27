@@ -44,6 +44,7 @@ VALUES (1, 'employee@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Xuan Loc',
        (2, 'user@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jason', 'Wang', 'EMPLOYEE'),
        (3, 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Søren', 'Petersen', 'ADMINISTRATOR');
 DROP TABLE IF EXISTS task CASCADE;
+
 CREATE TABLE `task`
 (
     `id`                   bigint(11)   NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -37,7 +37,7 @@ public class UserRepository {
         }
     }
 
-    public void updateAccount(AccountModel newUser){
+  /*  public void updateAccount(AccountModel newUser){
         try {
             Connection connection = connectionManager.getConnection();
             final String CREATE_QUERY = "INSERT INTO users(firstname, lastname, permission_level)" +
@@ -46,13 +46,31 @@ public class UserRepository {
             pstmt.setString(1, newUser.getFirstName());
             pstmt.setString(2, newUser.getLastName());
             pstmt.setString(3, String.valueOf(newUser.getPermissionLevel()));
-
             pstmt.executeUpdate();
         }catch (SQLException e){
             System.out.println("Error: Could not add Account to database and addAccount. ");
             e.printStackTrace();
         }
+    }*/
+
+    public void updateAccount(AccountModel newUser) {
+        try {
+            Connection connection = connectionManager.getConnection();
+            final String UPDATE_QUERY = "UPDATE users SET firstname = ?, lastname = ?, permission_level = ? WHERE id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(UPDATE_QUERY);
+            pstmt.setString(1, newUser.getFirstName());
+            pstmt.setString(2, newUser.getLastName());
+            pstmt.setString(3, String.valueOf(newUser.getPermissionLevel()));
+            pstmt.setLong(4, newUser.getId());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: Could not update Account in database.");
+            e.printStackTrace();
+        }
     }
+
+
 
     public List<AccountModel> getAllUsers(){
         List<AccountModel> userList = new ArrayList<>();
@@ -131,6 +149,7 @@ public class UserRepository {
         }
         return null;
     }
+
 
     public AccountModel getById(Long id){
 
