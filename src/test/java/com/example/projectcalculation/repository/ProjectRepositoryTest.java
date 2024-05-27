@@ -52,7 +52,6 @@ public class ProjectRepositoryTest {
         updateProject.setTargetDate(LocalDate.of(2023,12,31));
         updateProject.setBudget(50000L);
 
-        // Thực hiện cập nhật
         projectRepository.updateProject(updateProject);
 
         // Truy xuất đối tượng sau khi cập nhật
