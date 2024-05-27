@@ -54,10 +54,8 @@ public class ProjectRepositoryTest {
 
         projectRepository.updateProject(updateProject);
 
-        // Truy xuất đối tượng sau khi cập nhật
         ProjectModel updatedProject = projectRepository.findProjectByID(1L);
 
-        // Kiểm tra các giá trị
         assertNotNull(updatedProject);
         assertEquals("Updated Project Name", updatedProject.getProjectName());
         assertEquals("Updated Description", updatedProject.getProjectDescription());

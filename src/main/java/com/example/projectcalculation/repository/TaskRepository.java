@@ -46,7 +46,7 @@ public class TaskRepository {
                     " WHERE id = ?";
             PreparedStatement pstmt = connection.prepareStatement(SQL_QUERY);
             pstmt.setLong(1, taskModel.getSubProjectId());
-            pstmt.setString(2, taskModel.getTaskDescription());
+            pstmt.setString(2, taskModel.getTaskName());
             pstmt.setString(3, taskModel.getTaskDescription());
             pstmt.setDate(4, Date.valueOf(taskModel.getPlannedStartDate()));
             pstmt.setDate(5, Date.valueOf(taskModel.getPlannedFinishDate()));
